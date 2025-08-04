@@ -292,6 +292,7 @@ function CartesianChartContent<
   /**
    * Pan gesture handling
    */
+  const xOffset = Math.min(xScale.range()[0]!, 0)
   const lastIdx = useSharedValue(null as null | number);
   /**
    * Take a "press value" and an x-value and update the shared values accordingly.
@@ -302,7 +303,7 @@ function CartesianChartContent<
     y: number,
   ) => {
     "worklet";
-    const idx = findClosestPoint(tData.value.ox, x);
+    const idx = findClosestPoint(tData.value.ox, x + xOffset);
 
     if (typeof idx !== "number") return;
 
