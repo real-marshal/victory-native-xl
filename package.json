@@ -1,5 +1,6 @@
 {
   "name": "victory-native-xl-monorepo",
+  "version": "1.0",
   "private": true,
   "workspaces": [
     "lib",
@@ -19,7 +20,8 @@
     "test:watch": "yarn workspace victory-native test:watch",
     "changeset": "changeset",
     "check:code": "yarn lint && yarn typecheck && yarn test",
-    "version": "yarn changeset version && yarn install --no-frozen-lockfile"
+    "version": "yarn changeset version && yarn install --no-frozen-lockfile",
+    "prepare": "yarn build && find . -mindepth 1 -maxdepth 1 ! -name 'lib' -exec rm -rf {} + && cp -r lib/* . && rm -rf lib"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.9",
@@ -41,5 +43,6 @@
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }
