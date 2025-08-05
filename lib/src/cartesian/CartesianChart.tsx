@@ -636,6 +636,7 @@ function CartesianChartContent<
         isNumericalData={isNumericalData}
         chartBounds={chartBounds}
         zoom={zoomX}
+        matrix={transformState?.matrix}
       />
     ) : null;
 
